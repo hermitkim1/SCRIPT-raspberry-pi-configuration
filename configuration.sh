@@ -63,6 +63,15 @@ sudo systemctl restart fail2ban
 echo ==============================
 echo == To install Docker engine ==
 echo ==============================
+sleep 2
 wget -qO- get.docker.com | sh
 # To check successful Docker installation
 sudo docker info
+
+# To setup bash-completion for git (Optional)
+# echo "" >> ~/.bashrc
+echo ======================================
+echo == To setup bash-completion for git ==
+echo ===============Optional===============
+sleep 2
+# echo "source /usr/share/bash-completion/completions/git" >> ~./bashrc
