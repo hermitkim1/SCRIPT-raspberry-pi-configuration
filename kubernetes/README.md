@@ -146,8 +146,8 @@ kubeadm join [YOUR_MASTER_IP_ADDRESS]:6443 --token xxxxxxxxxxxxxxxxxxxxxxx \
 #### 3.2.4. Install conatiner network plugins
 There are some plugins. You can select what you want.
 
-I have succeeded in installing the flannel on Raspberry Pi 4 on Sep. 10th, 2020.
-Calico latest container image doesn't seem to support arm system architecture. I didn't try to install weaveNet.
+***I have succeeded in installing the flannel on Raspberry Pi 4 on Sep. 10th, 2020.
+Calico latest container image doesn't seem to support arm system architecture. I didn't try to install weaveNet.***
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
