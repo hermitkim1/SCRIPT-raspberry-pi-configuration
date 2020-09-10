@@ -1,33 +1,37 @@
 #!/bin/bash
 
 # update apt package list
+echo 
+echo =================================================
 echo == update apt package list
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 sudo apt update -y
 
 # upgrade apt package considering dependencies
+echo 
+echo =================================================
 echo == upgrade apt package considering dependencies
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 sudo apt dist-upgrade -y
 
 # install docker
+echo 
+echo =================================================
 echo == install Docker engine
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 # install docker
 wget -qO- get.docker.com | sh
 # check the installed docker
 sudo docker info
 
-# install docker
-echo == install Docker engine
-echo ======================================
-echo ======================================
+# change the default cgoups drive Docker uses
+echo 
+echo =================================================
+echo == change the default cgoups drive Docker uses
+echo =================================================
 sleep 2
 # change the default cgroups driver Docker uses from cgroups to systemd 
 # to allow systemd to act as the cgroups manager and 
@@ -42,38 +46,44 @@ sudo cat > /etc/docker/daemon.json <<EOF
   "storage-driver": "overlay2"
 }
 EOF
-
+# make a directory
 sudo mkdir -p /etc/systemd/system/docker.service.d
+# reload daemon
 sudo systemctl daemon-reload
+# restart docker
 sudo systemctl restart docker
 
 # disable swap
 # running with swap on is not supported in k8s
+echo 
+echo =================================================
 echo == disable swap
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 sudo swapoff -a
 
 # add k8s repository
+echo 
+echo =================================================
 echo == add kubernetes repostiory
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # install k8s
+echo 
+echo =================================================
 echo == install k8s
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 apt install -y kubelet kubeadm kubectl kubernetes-cni
 
 # set up cgroups
+echo 
+echo =================================================
 echo == "set up cgroups"
-echo ======================================
-echo ======================================
+echo =================================================
 sleep 2
 echo Adding " cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory" to /boot/cmdline.txt
 sudo cp /boot/cmdline.txt /boot/cmdline_backup.txt
