@@ -60,7 +60,9 @@ echo =================================================
 echo == disable swap
 echo =================================================
 sleep 2
-sudo swapoff -a
+sudo dphys-swapfile swapoff && \
+sudo dphys-swapfile uninstall && \
+sudo systemctl disable dphys-swapfile
 
 # add k8s repository
 echo 
