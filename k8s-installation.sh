@@ -92,4 +92,18 @@ sudo cp /boot/cmdline.txt /boot/cmdline_backup.txt
 orig="$(head -n1 /boot/cmdline.txt) cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory"
 echo $orig | sudo tee /boot/cmdline.txt
 
+# allow iptables to see bridged traffic
+echo 
+echo =================================================
+echo == allow iptables to see bridged tracce
+echo =================================================
+# https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#network-plugin-requirements
+sleep 2
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sudo sysctl --system
+
 echo Please reboot
