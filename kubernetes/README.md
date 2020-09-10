@@ -1,3 +1,5 @@
+![RPi-version](https://img.shields.io/badge/rpi-v4-informational) ![date-passing](https://img.shields.io/badge/sep--10--2020-passing-success) 
+
 # Kubernetes step-by-step installation on Raspberry Pi 4
 
 ## 1. Environment setup
