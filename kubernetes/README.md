@@ -1,4 +1,4 @@
-# Kubernetes installation on Raspberry Pi 4
+# Kubernetes step-by-step installation on Raspberry Pi 4
 
 ## 1. Environment setup
 ### 1.1. Update Raspberry Pi
