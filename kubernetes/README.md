@@ -98,8 +98,9 @@ sudo docker info
 ```
 
 #### 3.1.3. Modify a user account
+Default username on Raspberry Pi OS is `pi`. <ins>**You should check YOUR_USERNAME by `whoami` or `echo "$USER"`.**</ins>
 ```bash
-sudo usermod pi -aG docker && newgrp docker
+sudo usermod [YOUR_USERNAME] -aG docker && newgrp docker
 ```
 `-a, --append`
 Add the user to the supplementary group(s). Use only with the -G option.
